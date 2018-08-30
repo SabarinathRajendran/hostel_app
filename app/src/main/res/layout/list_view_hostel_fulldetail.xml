@@ -3,27 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/profile_view_btn"
+    <TextView
+        android:id="@+id/lv_key_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/btnbg"
-        android:text="Profile"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="16dp"
+        android:text="key"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/mprofile_test"
+    <TextView
+        android:id="@+id/lv_value_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="431dp" />
-
+        android:layout_marginTop="3dp"
+        android:text="valuefield"
+        app:layout_constraintStart_toStartOf="@+id/lv_key_field"
+        app:layout_constraintTop_toBottomOf="@+id/lv_key_field" />
 </android.support.constraint.ConstraintLayout>
