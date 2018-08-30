@@ -23,7 +23,6 @@
         android:gravity="center"
         android:hint="Enter Value"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,8 +30,8 @@
     <Button
         android:id="@+id/hs_search_btn"
         android:layout_width="318dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="227dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="29dp"
         android:layout_marginLeft="29dp"
         android:layout_marginRight="29dp"
@@ -43,5 +42,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hs_value_field" />
+        app:layout_constraintTop_toBottomOf="@+id/hs_spinner" />
+
+    <Spinner
+        android:id="@+id/hs_spinner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="310dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/editbg"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:spinnerMode="dialog"
+        app:layout_constraintBottom_toTopOf="@+id/hs_search_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

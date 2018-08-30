@@ -1,12 +1,14 @@
 package com.example.sabari.hostel_app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -19,6 +21,8 @@ public class hostel_result_activity extends AppCompatActivity {
 
     private RecyclerView mRecyclerview;
 
+    private Bundle mbundle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +31,14 @@ public class hostel_result_activity extends AppCompatActivity {
        Bundle b = getIntent().getExtras();
 
        String searchkey = b.getString("sv");
+        String searchfield = b.getString("field");
 
         mfirebase = FirebaseDatabase.getInstance().getReference().child("profile");
+        final Bundle mbundle = new Bundle();
         mRecyclerview= findViewById(R.id.hr_recyclerview);
         mRecyclerview.setHasFixedSize(true);
         mRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-        Query query = mfirebase.orderByChild("rno").startAt(searchkey).endAt(searchkey + "\uf8ff");
+        Query query = mfirebase.orderByChild(searchfield).startAt(searchkey).endAt(searchkey + "\uf8ff");
 
         FirebaseRecyclerAdapter<hostel_students,cviewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<hostel_students, cviewHolder>(
                 hostel_students.class,
@@ -41,9 +47,20 @@ public class hostel_result_activity extends AppCompatActivity {
                 query
         ) {
             @Override
-            protected void populateViewHolder(cviewHolder viewHolder, hostel_students model, int position) {
+            protected void populateViewHolder(cviewHolder viewHolder, final hostel_students model, int position) {
 
                 viewHolder.setDetails(getApplicationContext(),model.getName(),model.getRno());
+
+                viewHolder.mview.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent testleintent = new Intent(hostel_result_activity.this, full_hostel_details.class);
+                        String val = model.getRno();
+                       mbundle.putString("rollno",val);
+                       testleintent.putExtras(mbundle);
+                      startActivity(testleintent);
+                    }
+                });
 
             }
         };

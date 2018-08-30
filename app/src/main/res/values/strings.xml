@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">hostel_app</string>
+    
+    <string-array name="profile_search_pick">
+        <item>Student_Name</item>
+        <item>Student_Rollno</item>
+        <item>Tutor_Name</item>
+        <item>Department</item>
+    </string-array>
 </resources>

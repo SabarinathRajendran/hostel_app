@@ -25,9 +25,13 @@ public class full_hostel_details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_hostel_details);
 
+        Bundle b = getIntent().getExtras();
+
+        String toview = b.getString("rollno");
+
         mlistview = findViewById(R.id.fh_listview);
 
-        mdatabase = FirebaseDatabase.getInstance().getReference().child("profile").child("15BCE015");
+        mdatabase = FirebaseDatabase.getInstance().getReference().child("profile").child(toview);
 
 
         final CustomAdapter myadapter = new CustomAdapter(this,R.layout.hostel_result_view,animalList);
