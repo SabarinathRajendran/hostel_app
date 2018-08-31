@@ -49,7 +49,7 @@ public class hostel_result_activity extends AppCompatActivity {
             @Override
             protected void populateViewHolder(cviewHolder viewHolder, final hostel_students model, int position) {
 
-                viewHolder.setDetails(getApplicationContext(),model.getName(),model.getRno());
+                viewHolder.setDetails(getApplicationContext(),model.getName(),model.getRno(), model.getRoom_no());
 
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -80,13 +80,14 @@ public class hostel_result_activity extends AppCompatActivity {
 
         }
 
-        public void setDetails(Context ctx,String name, String rno){
+        public void setDetails(Context ctx,String name, String rno ,String room_no){
             TextView mname = mview.findViewById(R.id.hsv_name);
             TextView mrno = mview.findViewById(R.id.hsv_rollno);
-            TextView mnumber = mview.findViewById(R.id.hsv_number);
+            TextView mnumber = mview.findViewById(R.id.hsv_room);
 
             mname.setText(name);
             mrno.setText(rno);
+            mnumber.setText(room_no);
         }
     }
 }
