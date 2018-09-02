@@ -12,6 +12,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,7 @@ public class login extends AppCompatActivity {
     private EditText memail;
     private EditText mpassword;
     private Button msubmit;
+    private TextView mforgottext;
 
     private FirebaseAuth mAuth;
     private ProgressDialog mprogress;
@@ -41,8 +43,16 @@ public class login extends AppCompatActivity {
         msubmit = findViewById(R.id.l_submit_button);
         memail = findViewById(R.id.l_email_field);
         mpassword = findViewById(R.id.l_password_field);
+        mforgottext = findViewById(R.id.l_forgotpassword);
 
         mprogress= new ProgressDialog(this);
+
+        mforgottext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(login.this , forgot_password.class));
+            }
+        });
 
         final Drawable customErrorDrawable = getResources().getDrawable(R.drawable.ic_error_outline_red_500_18dp);
         customErrorDrawable.setBounds(-10, 0, customErrorDrawable.getIntrinsicWidth(), customErrorDrawable.getIntrinsicHeight());

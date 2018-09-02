@@ -19,7 +19,8 @@
         <activity android:name=".hostel_search_activity" />
         <activity android:name=".hostel_result_activity" />
         <activity android:name=".full_hostel_details" />
-        <activity android:name=".login"></activity>
+        <activity android:name=".login" />
+        <activity android:name=".forgot_password"></activity>
     </application>
 
 </manifest>
