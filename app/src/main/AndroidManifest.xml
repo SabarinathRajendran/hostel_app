@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".hostel_search_activity" />
         <activity android:name=".hostel_result_activity" />
-        <activity android:name=".full_hostel_details"></activity>
+        <activity android:name=".full_hostel_details" />
+        <activity android:name=".login"></activity>
     </application>
 
 </manifest>

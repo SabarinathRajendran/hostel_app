@@ -8,6 +8,62 @@
 
     <ListView
         android:id="@+id/fh_listview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fh_profileimage">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/fh_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Name"
+        app:layout_constraintStart_toEndOf="@+id/fh_profileimage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fh_roomno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Room No"
+        app:layout_constraintBottom_toTopOf="@+id/fh_listview"
+        app:layout_constraintStart_toEndOf="@+id/fh_profileimage"
+        app:layout_constraintTop_toBottomOf="@+id/fh_rollno" />
+
+    <TextView
+        android:id="@+id/fh_rollno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Roll No"
+        app:layout_constraintBottom_toTopOf="@+id/fh_listview"
+        app:layout_constraintStart_toEndOf="@+id/fh_profileimage"
+        app:layout_constraintTop_toBottomOf="@+id/fh_name" />
+
+    <ImageView
+        android:id="@+id/fh_profileimage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/man" />
 </android.support.constraint.ConstraintLayout>
