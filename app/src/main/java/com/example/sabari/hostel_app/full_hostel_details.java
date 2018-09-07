@@ -1,5 +1,6 @@
 package com.example.sabari.hostel_app;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -7,12 +8,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -24,6 +29,9 @@ public class full_hostel_details extends AppCompatActivity {
     private TextView mrollno;
     private TextView mroomno;
     private ImageView mprofile_image;
+    private StorageReference mStorageRef;
+    public Uri downloaduri;
+
 
     private ArrayList<Item> animalList = new ArrayList<Item>();
 
@@ -33,10 +41,12 @@ public class full_hostel_details extends AppCompatActivity {
         setContentView(R.layout.activity_full_hostel_details);
 
         Bundle b = getIntent().getExtras();
+        mStorageRef = FirebaseStorage.getInstance().getReference();
 
         mname = findViewById(R.id.fh_name);
         mrollno = findViewById(R.id.fh_rollno);
         mroomno = findViewById(R.id.fh_roomno);
+        mprofile_image = findViewById(R.id.fh_profileimage);
 
         String toview = b.getString("rollno");
 
@@ -54,6 +64,16 @@ public class full_hostel_details extends AppCompatActivity {
                 mname.setText(name);
                 mrollno.setText(rollno);
                 mroomno.setText(roomno);
+                mStorageRef.child("profileimg/"+rollno+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+
+                        downloaduri = uri;
+                        Picasso.get().load(downloaduri).into(mprofile_image);
+
+                    }
+                });
+
             }
 
             @Override
@@ -61,6 +81,7 @@ public class full_hostel_details extends AppCompatActivity {
                 Toast.makeText(full_hostel_details.this, "error while getting name", Toast.LENGTH_SHORT).show();
             }
         });
+
 
 
         final CustomAdapter myadapter = new CustomAdapter(this,R.layout.hostel_result_view,animalList);

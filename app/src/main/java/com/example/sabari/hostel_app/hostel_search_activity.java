@@ -62,16 +62,16 @@ public class hostel_search_activity extends AppCompatActivity implements Adapter
                 switch(year){
 
                     case "Student_Name": mfieldval = "name";
-                        value = mvalue_field.getText().toString();
+                        value = mvalue_field.getText().toString().toUpperCase();
                     break;
                     case "Student_Rollno": mfieldval = "rno";
-                        value = mvalue_field.getText().toString();
+                        value = mvalue_field.getText().toString().toUpperCase();
                     break;
                     case "Tutor_Name": mfieldval = "tutorname";
-                    value = mvaluespinner.getSelectedItem().toString();
+                    value = mvaluespinner.getSelectedItem().toString().toUpperCase();
                     break;
                     case "Department": mfieldval = "branch";
-                        value = mvaluespinner.getSelectedItem().toString();
+                        value = mvaluespinner.getSelectedItem().toString().toUpperCase();
                     break;
                     default: mfieldval = "rno";
                         Toast.makeText(hostel_search_activity.this, "error", Toast.LENGTH_SHORT).show();
