@@ -1,13 +1,16 @@
 package com.example.sabari.hostel_app;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.clans.fab.FloatingActionButton;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +34,12 @@ public class full_hostel_details extends AppCompatActivity {
     private ImageView mprofile_image;
     private StorageReference mStorageRef;
     public Uri downloaduri;
+    private FloatingActionButton mleavebtn;
+    private FloatingActionButton mremarkbtn;
+    private Bundle mb;
+    private String name;
+    private String rollno;
+    private String roomno;
 
 
     private ArrayList<Item> animalList = new ArrayList<Item>();
@@ -41,25 +50,44 @@ public class full_hostel_details extends AppCompatActivity {
         setContentView(R.layout.activity_full_hostel_details);
 
         Bundle b = getIntent().getExtras();
-        mStorageRef = FirebaseStorage.getInstance().getReference();
 
+        mStorageRef = FirebaseStorage.getInstance().getReference();
         mname = findViewById(R.id.fh_name);
         mrollno = findViewById(R.id.fh_rollno);
         mroomno = findViewById(R.id.fh_roomno);
         mprofile_image = findViewById(R.id.fh_profileimage);
+        mleavebtn = findViewById(R.id.fh_sendsms_leave);
+        mremarkbtn = findViewById(R.id.fh_sendsms_remark);
 
         String toview = b.getString("rollno");
 
-        mlistview = findViewById(R.id.fh_listview);
+        final String[] smsresult = new String[1];
 
+        mleavebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                smsresult[0] = "1";
+                startsmsactivity(smsresult[0]);
+            }
+        });
+
+        mremarkbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                smsresult[0] = "2";
+                startsmsactivity(smsresult[0]);
+            }
+        });
+
+        mlistview = findViewById(R.id.fh_listview);
         mdatabase = FirebaseDatabase.getInstance().getReference().child("profile").child(toview);
 
         mdatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String name = dataSnapshot.child("name").getValue(String.class);
-                String rollno = dataSnapshot.child("rno").getValue(String.class);
-                String roomno = "RoomNo : " + dataSnapshot.child("room_no").getValue(String.class);
+                name = dataSnapshot.child("name").getValue(String.class);
+                rollno = dataSnapshot.child("rno").getValue(String.class);
+                roomno = "RoomNo : " + dataSnapshot.child("room_no").getValue(String.class);
 
                 mname.setText(name);
                 mrollno.setText(rollno);
@@ -118,5 +146,13 @@ public class full_hostel_details extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void startsmsactivity(String s) {
+        Intent i = new Intent(full_hostel_details.this, sms_activity.class);
+        i.putExtra("smsresult",s);
+        i.putExtra("name",name);
+        i.putExtra("rollno",rollno);
+        startActivity(i);
     }
 }

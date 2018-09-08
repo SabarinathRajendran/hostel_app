@@ -117,11 +117,19 @@
         fab:menu_showShadow="true">
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item"
+        android:id="@+id/fh_sendsms_leave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        fab:fab_label="send Leave sms"
+        fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fh_sendsms_remark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_back_black_24dp"
-            fab:fab_label="Menu item 1"
+            fab:fab_label="send remarks"
             fab:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>
