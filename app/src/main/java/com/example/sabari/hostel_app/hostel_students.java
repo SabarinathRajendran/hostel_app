@@ -2,15 +2,16 @@ package com.example.sabari.hostel_app;
 
 public class hostel_students {
 
-    String name,rno;
+    String name,rno,room_no;
 
-    hostel_students(){
+    public hostel_students(){
 
     }
 
-    public hostel_students(String name, String rno) {
+    public hostel_students(String name, String rno, String room_no) {
         this.name = name;
         this.rno = rno;
+        this.room_no = room_no;
     }
 
     public String getName() {
@@ -27,5 +28,13 @@ public class hostel_students {
 
     public void setRno(String rno) {
         this.rno = rno;
+    }
+
+    public String getRoom_no() {
+        return room_no;
+    }
+
+    public void setRoom_no(String room_no) {
+        this.room_no = room_no;
     }
 }
