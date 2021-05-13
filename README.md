@@ -1,5 +1,5 @@
 # hostel_app
-app for the hostel Student MAnagement Using Firebase as Backend
+app for the hostel Student Management Using Firebase as Backend
 
 An Android application to maintain student details with Firebase as backend.
 
